@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Flight Booking</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="Home/Search">Home</a>
+        <!--ng-container *ngIf="(loginService.currentUser$ | async)===null">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="Login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="Sign Up">Sign up</a>
+          </li>
+        </ng-container-->
+
+        <a class="nav-link" routerLink="Sign Up">Sign Up</a>
+        <a class="nav-link" routerLink="Login">Login</a>
+        <a class="nav-link" routerLink="Test">Test</a>
+        <ng-container *ngIf="isLoggedIn">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Update/:email">Update</a>
+                <!--a class="btn btn-light " [routerLink]="['Edit',fl.aeroId]">Edit</a-->
+              </li>
+              <li><a class="dropdown-item" href="#">Delete</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="Get all Information">Get all Information</a></li>
+            </ul>
+          </li>
+        </ng-container>
+
+        <ng-template #notLoggedIn>
+          <!-- Render nothing when not logged in -->
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div *ngIf="isLoggedIn; else notLoggedIn"> <!-- Display message when logged in -->
+  <!--p>You are logged in.</p-->
+  <!--ng-container *ngIf="loginService.currentUser$ | async as user">
+    <p style="color: #f0a800;">
+        <{{ user | json }}
+        {{ logAfterIfCondition(user) }}
+     >
+    Hi,{{user.email}}
+    </p>
+  </ng-container-->
+</div>
+<ng-template #notLoggedIn> <!-- Display message when not logged in -->
+  <p>You are not logged in.</p>
+</ng-template>

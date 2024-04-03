@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Details Form</title>
+</head>
+<body>
+    <form [formGroup]="flightAddForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="aeroId">Aero ID:</label><br>
+        <input type="text" id="aeroId" name="aeroId" formControlName="aeroId"><br>
+        <div *ngIf="flightAddForm.get('aeroId')?.invalid && flightAddForm.get('aeroId')?.touched" class="text-danger">
+          Aero Id is required.
+      </div>
+      </div>
+        <label for="aeroName">Aero Name:</label><br>
+        <input type="text" id="aeroName" name="aeroName" formControlName="aeroName" required><br>
+        <div *ngIf="flightAddForm.get('aeroName')?.invalid && flightAddForm.get('aeroName')?.touched" class="text-danger">
+          Aero Name is required.
+      </div>
+
+        <label for="fromCity">From City:</label><br>
+        <input type="text" id="from_city" name="from_city" formControlName="from_city" required ><br>
+        <div *ngIf="flightAddForm.get('from_city')?.invalid && flightAddForm.get('from_city')?.touched" class="text-danger">
+          Source is required.
+      </div>
+
+        <label for="toCity">To City:</label><br>
+        <input type="text" id="to_city" name="to_city" formControlName="to_city" required><br>
+        <div *ngIf="flightAddForm.get('to_city')?.invalid && flightAddForm.get('to_city')?.touched" class="text-danger">
+          Destination is required.
+      </div>
+
+        <label for="departure">Departure:</label><br>
+        <input type="datetime-local" id="departure" formControlName="departure" name="departure" required><br>
+        <div *ngIf="flightAddForm.get('departure')?.invalid && flightAddForm.get('departure')?.touched" class="text-danger">
+          Departure is required.
+      </div>
+
+        <label for="arrival">Arrival:</label><br>
+        <input type="datetime-local" id="arrival" formControlName="arrival" name="arrival" required><br>
+        <div *ngIf="flightAddForm.get('arrival')?.invalid && flightAddForm.get('arrival')?.touched" class="text-danger">
+          Arrival is required.
+      </div>
+
+        <label for="fare">Fare:</label><br>
+        <input type="number" id="fare" name="fare" formControlName="fare"><br>
+        <div *ngIf="flightAddForm.get('fare')?.invalid && flightAddForm.get('fare')?.touched" class="text-danger">
+          Fare is required.
+      </div>
+
+        <label for="seatingCapacity">Seating Capacity:</label><br>
+        <input type="number" id="seatingCapacity" name="seatingCapacity" formControlName="seatingCapacity" required ><br>
+        <div *ngIf="flightAddForm.get('seatingCapacity')?.invalid && flightAddForm.get('seatingCapacity')?.touched" class="text-danger">
+          Seating Capacity is required.
+      </div>
+
+        <button type="submit" href="">Submit</button>
+    </form>
+</body>
+</html>

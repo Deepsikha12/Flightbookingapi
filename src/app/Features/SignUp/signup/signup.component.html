@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-image: url('https://feeds.abplive.com/onecms/images/uploaded-images/2021/09/08/634259599cd6f60c24f9e67a5680c064_original.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      /*padding-top: 20px;
+      padding-bottom: 0px;*/
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Sign up</h2>
+        <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" formControlName="Email" class="form-control" required [class.is-invalid]="SignUpForm.get('Email')?.invalid && SignUpForm.get('Email')?.touched">
+            <div class="invalid-feedback">
+              <div *ngIf="SignUpForm.get('Email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="SignUpForm.get('Email')?.errors?.['email']">Invalid email format.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" formControlName="Age" class="form-control" required [class.is-invalid]="SignUpForm.get('Age')?.invalid && SignUpForm.get('Age')?.touched">
+            <div class="invalid-feedback">
+              Age is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" formControlName="Password" class="form-control" required [class.is-invalid]="SignUpForm.get('Password')?.invalid && SignUpForm.get('Password')?.touched">
+            <div class="invalid-feedback">
+              Password is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Role:</label>
+            <select id="role" name="role" formControlName="Role" class="form-control" required [class.is-invalid]="SignUpForm.get('Role')?.invalid && SignUpForm.get('Role')?.touched">
+              <option value="" disabled selected>Select a Role</option>
+              <option value="User">User</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <div class="invalid-feedback">
+              Select a Role.
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <a href="Login" class="btn btn-secondary">Login</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+

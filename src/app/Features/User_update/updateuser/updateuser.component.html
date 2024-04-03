@@ -1,0 +1,24 @@
+<p>updateuser works!</p>
+
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" formControlName="Email"/>
+  <div *ngIf="updateForm.get('Email')?.invalid && updateForm.get('Email')?.touched" class="text-danger">
+      <div *ngIf="updateForm.get('Email')?.errors?.['required']">Email is required.</div>
+      <div *ngIf="updateForm.get('Email')?.errors?.['email']">Invalid email format.</div>
+  </div>
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age" formControlName="Age">
+  <div *ngIf="updateForm.get('Age')?.invalid && updateForm.get('Age')?.touched" class="text-danger">
+      Age is required.
+  </div>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" formControlName="Password">
+  <div *ngIf="updateForm.get('Password')?.invalid && updateForm.get('Password')?.touched" class="text-danger">
+      Password is required.
+  </div>
+
+  <button type="submit">Update</button>
+</form>
